@@ -18,7 +18,7 @@ if [ $LAST_KNOWN_HEIGHT -eq $LAST_HEIGHT ]; then
         echo $LAST_HEIGHT > $TMP_FILE
         exit 1
 else
-        echo 'Height is ok'
+        echo "Node height: $LAST_HEIGHT"
         echo $LAST_HEIGHT > $TMP_FILE
         exit 0
 fi
