@@ -1,0 +1,14 @@
+check program 'Height is changing' with path "/bin/bash -c 'cd /root/valmonit/sh/ && ./cosmos-rpc.sh cosmos-height-is-changing.sh'"
+    if status != 0 then exec "/root/valmonit/bin/monit2telegram"
+
+check program 'Validator is in active set' with path "/bin/bash -c 'cd /root/valmonit/sh/ && ./cosmos-rpc.sh cosmos-validator-has-voting-power.sh'"
+  if status != 0 then exec "/root/valmonit/bin/monit2telegram"
+
+check program 'RPC server is running' with path "/bin/bash -c 'cd /root/valmonit/sh/ && ./cosmos-rpc.sh cosmos-rpc-is-running.sh'"
+  if status != 0 then exec "/root/valmonit/bin/monit2telegram"
+
+check program 'API server is running' with path "/bin/bash -c 'cd /root/valmonit/sh/ && ./cosmos-rpc.sh cosmos-api-is-running.sh'"
+  if status != 0 then exec "/root/valmonit/bin/monit2telegram"
+
+check program 'Node has peers' with path "/bin/bash -c 'cd /root/valmonit/sh/ && ./cosmos-rpc.sh cosmos-node-has-peers.sh'"
+  if status != 0 then exec "/root/valmonit/bin/monit2telegram"
