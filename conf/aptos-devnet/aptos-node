@@ -1,0 +1,12 @@
+check process "agd is running"
+    matching "aptos-node"
+    if not exists then exec "/root/valmonit/bin/monit2telegram"
+
+check program 'Height is changing' with path "/bin/bash -c 'cd /root/valmonit/sh/aptos && ./1rpc-conf.sh aptos-height-is-changing.sh'"
+     if status != 0 then exec "/root/valmonit/bin/monit2telegram"
+
+check program 'Metrics available' with path "/bin/bash -c 'cd /root/valmonit/sh/aptos && ./1rpc-conf.sh aptos-metrics-available.sh'"
+     if status != 0 then exec "/root/valmonit/bin/monit2telegram"
+
+check program 'Node has peers' with path "/bin/bash -c 'cd /root/valmonit/sh/aptos && ./1rpc-conf.sh aptos-peers.sh'"
+     if status != 0 then exec "/root/valmonit/bin/monit2telegram"
