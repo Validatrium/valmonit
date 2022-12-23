@@ -1,0 +1,11 @@
+check program 'Height is changing' with path "/bin/bash -c 'cd /root/valmonit/sh/oasis/ && ./oasis-height-is-changing.sh'"
+    if status != 0 then exec "/root/valmonit/bin/monit2telegram"
+
+check program 'Node is validator' with path "/bin/bash -c 'cd /root/valmonit/sh/oasis/ && ./oasis-is-validator.sh'"
+  if status != 0 then exec "/root/valmonit/bin/monit2telegram"
+
+check program 'Node is running' with path "/bin/bash -c 'cd /root/valmonit/sh/oasis/ && ./oasis-node-is-running.sh'"
+  if status != 0 then exec "/root/valmonit/bin/monit2telegram"
+
+check program 'Node has peers' with path "/bin/bash -c 'cd /root/valmonit/sh/oasis/ && ./oasis-node-peers.sh'"
+  if status != 0 then exec "/root/valmonit/bin/monit2telegram"
